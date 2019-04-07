@@ -1,0 +1,5 @@
+{
+  "port": 8085,
+  "endpoint": "/customEndpoint",
+  "includeSubscription": true
+}
