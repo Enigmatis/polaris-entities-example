@@ -1,0 +1,7 @@
+{
+  "id": "p01aris-entities-example",
+  "name": "polaris-entities-example",
+  "repositoryVersion": "0.1",
+  "environment": "dev",
+  "component": "compo"
+}
