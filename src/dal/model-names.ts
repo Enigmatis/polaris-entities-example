@@ -1,5 +1,5 @@
 export const modelNames = {
-    ELLIPSE: 'ellipse',
+    POINT: 'point',
     POLYGON: 'polygon',
     MISSION: 'mission',
     FOLDER: 'folder',
