@@ -4,6 +4,11 @@
  * Module dependencies.
  */
 import * as http from 'http';
+
+import { config } from 'dotenv';
+
+config();
+
 import { app } from '../app';
 import { baseLogger } from '../utills/base-logger';
 
@@ -15,7 +20,7 @@ const port = normalizePort(process.env.PORT || '3000');
 // app.set('port', port);
 
 /**
- * Create HTTP server.
+ * Create HTTP polarisServer.
  */
 
 const server = http.createServer(app.callback());
@@ -32,7 +37,7 @@ server.on('listening', onListening);
  * Normalize a port into a number, string, or false.
  */
 
-function normalizePort(val: any) {
+function normalizePort(val: any): number | boolean {
     const portValue = parseInt(val, 10);
 
     if (isNaN(portValue)) {
@@ -49,10 +54,10 @@ function normalizePort(val: any) {
 }
 
 /**
- * Event listener for HTTP server "error" event.
+ * Event listener for HTTP polarisServer "error" event.
  */
 
-function onError(error: any) {
+function onError(error: any): void {
     if (error.syscall !== 'listen') {
         throw error;
     }
@@ -75,7 +80,7 @@ function onError(error: any) {
 }
 
 /**
- * Event listener for HTTP server "listening" event.
+ * Event listener for HTTP polarisServer "listening" event.
  */
 
 function onListening() {

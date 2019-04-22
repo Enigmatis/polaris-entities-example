@@ -1,4 +1,5 @@
 import { RepositoryModel } from '@enigmatis/mongo-driver';
+import { getCurrId } from '../../utills/correlation-id-generator';
 
 export interface ExampleEntitiesBase extends RepositoryModel {
     entityName: string;
@@ -11,11 +12,11 @@ export const ExampleEntitiesBaseSchema = {
     entityName: {
         type: String,
         required: true,
-        default: 'folder',
     },
     correlationId: {
         type: String,
         required: true,
+        default: getCurrId(),
     },
     name: {
         type: String,

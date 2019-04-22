@@ -3,12 +3,14 @@ import {
     MiddlewaresConfig,
     POLARIS_TYPES,
     polarisContainer,
+    PolarisGraphQLServer,
     PolarisServerConfig,
 } from '@enigmatis/polaris';
 import * as Koa from 'koa';
 import { getLoggerConfiguration, getMiddlewareConfiguration, getPolarisServerConfig } from '../utills/config';
+import { getSchema } from './schema';
 
-export const init = async (app: Koa) => {
+export const init = async () => {
     polarisContainer.bind<LoggerConfig>(POLARIS_TYPES.LoggerConfig)
         .toConstantValue({ loggerConfiguration: getLoggerConfiguration() });
     polarisContainer
@@ -17,6 +19,10 @@ export const init = async (app: Koa) => {
     polarisContainer
         .bind<MiddlewaresConfig>(POLARIS_TYPES.MiddlewaresConfig)
         .toConstantValue(getMiddlewareConfiguration());
-    // const mergedContainer = Container.merge(polarisContainer, schemaContainer);
-    // const server: GraphQLServer = mergedContainer.get<GraphQLServer>(POLARIS_TYPES.GraphQLServer);
+    polarisContainer.bind(POLARIS_TYPES.GraphQLSchema).toConstantValue(await getSchema());
+};
+
+export const start = async (app: Koa) => {
+    const server: PolarisGraphQLServer = polarisContainer.get<PolarisGraphQLServer>(POLARIS_TYPES.GraphQLServer);
+    server.start(app);
 };
