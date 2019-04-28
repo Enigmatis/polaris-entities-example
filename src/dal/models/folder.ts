@@ -10,7 +10,7 @@ export interface Folder extends ExampleEntitiesBase {
     owner: string;
     entities: {
         polygons: Polygon[],
-        ellipses: Point[],
+        points: Point[],
     };
     classification: Mission[];
     editPassword?: string;
@@ -30,7 +30,7 @@ const folderSchema: SchemaCreator = (getRefName) => new Schema<Folder>({
             ref: getRefName(modelNames.POLYGON),
             default: [],
         }],
-        ellipses: [{
+        points: [{
             type: Schema.Types.ObjectId,
             ref: getRefName(modelNames.POINT),
             default: [],

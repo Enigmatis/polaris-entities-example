@@ -16,7 +16,7 @@ export const errorHandlerMiddleware = async (ctx: Context, next: () => void) => 
         ctx.body =
             process.env.NODE_ENV === 'develop'
                 ? err.message
-                : 'Internal polarisServer error, please connect support';
+                : 'Internal server error, please connect support';
     }
 };
 
@@ -25,5 +25,5 @@ export const loggerMiddleware = async (ctx: Context, next: () => void) => {
     baseLogger.info(`---> got ${ctx.method}' request to '${ctx.url}'`);
     await next();
     const ms = new Date().getTime() - start;
-    baseLogger.info(`<---  '${ctx.method}' request to '${ctx.url}' took '${ms}ms'. result status is: '${ctx.status}3'`);
+    baseLogger.info(`<---  '${ctx.method}' request to '${ctx.url}' took '${ms}ms'. result status is: '${ctx.status}'`);
 };

@@ -20,7 +20,7 @@ const port = normalizePort(process.env.PORT || '3000');
 // app.set('port', port);
 
 /**
- * Create HTTP polarisServer.
+ * Create HTTP servererver.
  */
 
 const server = http.createServer(app.callback());
@@ -54,7 +54,7 @@ function normalizePort(val: any): number | boolean {
 }
 
 /**
- * Event listener for HTTP polarisServer "error" event.
+ * Event listener for HTTP server "error" event.
  */
 
 function onError(error: any): void {
@@ -80,7 +80,7 @@ function onError(error: any): void {
 }
 
 /**
- * Event listener for HTTP polarisServer "listening" event.
+ * Event listener for HTTP server "listening" event.
  */
 
 function onListening() {

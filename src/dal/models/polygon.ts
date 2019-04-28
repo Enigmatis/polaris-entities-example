@@ -70,6 +70,7 @@ export const polygonSchemaCreator: SchemaCreator = ((refNameCreator) => {
         borderWidth: Number,
     });
     schema.pre('save', function(this: any, next: any) {
+        // temporary solution, until we get mongoDB 4 or delete required dataVersion property in polaris
         this.dataVersion = 15;
         next();
     });

@@ -5,7 +5,7 @@ import * as utills from 'util';
 const promiseReadDir = utills.promisify(readdir);
 const flatArr = (arr: any[] = []) => [].concat(...arr);
 
-export const getAllInFolder = async (path: string) => {
+export const getAllFromFolder = async (path: string) => {
     const filePaths = await promiseReadDir(path);
     return flatArr(filePaths.map((filePath) => Object.values(require(join(path, filePath)))));
 };

@@ -30,7 +30,7 @@ app.use(loggerMiddleware);
 
 // error-handling
 app.on('error', (err: Error) => {
-    baseLogger.error('polarisServer error', { throwable: err });
+    baseLogger.error('server error', { throwable: err });
 });
 const init = async () => {
     polarisServer.init();

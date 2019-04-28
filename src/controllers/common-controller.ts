@@ -12,7 +12,7 @@ export const versionController = async (ctx: Context) => {
             if (err) {
                 baseLogger.error('unable to find package json due to:', { throwable: err });
                 ctx.internalServerError(
-                    process.env.NODE_ENV === 'develop' ? err.message : 'internal polarisServer error',
+                    process.env.NODE_ENV === 'develop' ? err.message : 'internal server error',
                 );
             } else {
                 ctx.ok({ version: packageJson.version, date: stat.mtime });
