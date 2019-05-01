@@ -5,7 +5,7 @@ import { modelNames } from '../model-names';
 import { ExampleEntitiesBase, ExampleEntitiesBaseSchema } from './example-entities-base';
 import { Mission } from './mission';
 
-export interface Ellipse extends ExampleEntitiesBase {
+export interface Point extends ExampleEntitiesBase {
     entitySubType: string;
     position: number[];
     height: number;
@@ -24,7 +24,7 @@ export interface Ellipse extends ExampleEntitiesBase {
     borderWidth?: number;
 }
 
-const ellipseSchemaCreator: SchemaCreator = (refNameCreator) => new Schema<Ellipse>({
+const pointSchemaCreator: SchemaCreator = (refNameCreator) => new Schema<Point>({
     ...ExampleEntitiesBaseSchema,
     entitySubType: {
         type: String,
@@ -63,4 +63,4 @@ const ellipseSchemaCreator: SchemaCreator = (refNameCreator) => new Schema<Ellip
     borderWidth: Number,
 });
 
-export const ellipseModelPerReality = getModelCreator<Ellipse>(modelNames.ELLIPSE, ellipseSchemaCreator);
+export const pointModelPerReality = getModelCreator<Point>(modelNames.POINT, pointSchemaCreator);

@@ -3,4 +3,4 @@ import { healthController, versionController } from '../controllers/common-contr
 
 export const commonRouter = new Router();
 commonRouter.get('/v', versionController);
-commonRouter.get('health', healthController);
+commonRouter.get('/health', healthController);

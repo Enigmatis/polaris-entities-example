@@ -1,16 +1,16 @@
 import { getModelCreator, SchemaCreator } from '@enigmatis/mongo-driver';
 import { Schema } from 'mongoose';
 import { modelNames } from '../model-names';
-import { Ellipse } from './ellipse';
 import { ExampleEntitiesBase, ExampleEntitiesBaseSchema } from './example-entities-base';
 import { Mission } from './mission';
+import { Point } from './point';
 import { Polygon } from './polygon';
 
 export interface Folder extends ExampleEntitiesBase {
     owner: string;
     entities: {
         polygons: Polygon[],
-        ellipses: Ellipse[],
+        points: Point[],
     };
     classification: Mission[];
     editPassword?: string;
@@ -30,9 +30,9 @@ const folderSchema: SchemaCreator = (getRefName) => new Schema<Folder>({
             ref: getRefName(modelNames.POLYGON),
             default: [],
         }],
-        ellipses: [{
+        points: [{
             type: Schema.Types.ObjectId,
-            ref: getRefName(modelNames.ELLIPSE),
+            ref: getRefName(modelNames.POINT),
             default: [],
         }],
     },

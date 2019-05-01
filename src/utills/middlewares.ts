@@ -5,7 +5,7 @@ export const errorHandlerMiddleware = async (ctx: Context, next: () => void) => 
     try {
         await next();
     } catch (err) {
-        baseLogger.error(
+        baseLogger.fatal(
             `uncaught error in middleware, method: '${ctx.method}', url: '${ctx.url}',\n
              params: '${JSON.stringify(ctx.params)}', body: '${JSON.stringify(
                 ctx.request && ctx.request.body,
@@ -25,5 +25,5 @@ export const loggerMiddleware = async (ctx: Context, next: () => void) => {
     baseLogger.info(`---> got ${ctx.method}' request to '${ctx.url}'`);
     await next();
     const ms = new Date().getTime() - start;
-    baseLogger.info(`<---  '${ctx.method}' request to '${ctx.url}' took '${ms}ms'`);
+    baseLogger.info(`<---  '${ctx.method}' request to '${ctx.url}' took '${ms}ms'. result status is: '${ctx.status}'`);
 };
