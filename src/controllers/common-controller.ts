@@ -3,11 +3,11 @@ import { Context } from 'koa';
 import * as path from 'path';
 import { baseLogger } from '../utills/base-logger';
 
-export const healthController = async (ctx: Context) => ctx.ok('OK');
+export const healthController = (ctx: Context) => ctx.ok('OK');
 
 export const versionController = async (ctx: Context) => {
     return new Promise((resolve) => {
-        const packageJson = require('./../../package');
+        const packageJson = require('./../../package.json');
         fs.stat(path.resolve(__dirname, './../../', 'package.json'), (err, stat) => {
             if (err) {
                 baseLogger.error('unable to find package json due to:', { throwable: err });
