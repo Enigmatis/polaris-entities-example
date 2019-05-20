@@ -30,6 +30,10 @@
     "no-submodule-imports": [
       true,
       "uuid"
+    ],
+    "no-implicit-dependencies": [
+      true,
+      "dev"
     ]
   }
 }
