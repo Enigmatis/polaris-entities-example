@@ -31,7 +31,7 @@ server.on('listening', onListening);
  */
 
 init().then(() => {
-    baseLogger.info('Polaris Server start done');
+    baseLogger.info('Polaris Server has started');
     server.listen(port);
 });
 

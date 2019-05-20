@@ -7,7 +7,6 @@ module.exports = {
         "js",
     ],
     testMatch: [
-        // "**/tests/**/*.[jt]s?(x)",
         "**/*.test.ts"
     ],
 };
