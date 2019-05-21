@@ -12,6 +12,7 @@
     "resolveJsonModule": true,
     "noImplicitAny": true,
     "skipLibCheck": true,
+    "types": ["jest"],
     "typeRoots": [
       "type-declarations"
     ],

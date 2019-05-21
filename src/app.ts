@@ -32,7 +32,7 @@ app.use(loggerMiddleware);
 app.on('error', (err: Error) => {
     baseLogger.error('server error', { throwable: err });
 });
-const init = async () => {
+export const init = async () => {
     polarisServer.init();
     const logger = polarisContainer.get<GraphqlLogger>(POLARIS_TYPES.GraphQLLogger);
     await initConnection({
@@ -41,7 +41,3 @@ const init = async () => {
     }, logger);
     await polarisServer.start(app);
 };
-
-init().then(() => {
-    baseLogger.info('Polaris Server start done');
-});

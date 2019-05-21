@@ -24,5 +24,5 @@ export const init = async () => {
 
 export const start = async (app: Koa) => {
     const server: PolarisGraphQLServer = polarisContainer.get<PolarisGraphQLServer>(POLARIS_TYPES.GraphQLServer);
-    server.start(app);
+    await server.start(app);
 };

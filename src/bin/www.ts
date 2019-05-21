@@ -9,7 +9,7 @@ import { config } from 'dotenv';
 
 config();
 
-import { app } from '../app';
+import { app, init } from '../app';
 import { baseLogger } from '../utills/base-logger';
 
 /**
@@ -17,7 +17,6 @@ import { baseLogger } from '../utills/base-logger';
  */
 
 const port = normalizePort(process.env.PORT || '3000');
-// app.set('port', port);
 
 /**
  * Create HTTP servererver.
@@ -25,13 +24,16 @@ const port = normalizePort(process.env.PORT || '3000');
 
 const server = http.createServer(app.callback());
 
+server.on('error', onError);
+server.on('listening', onListening);
 /**
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+init().then(() => {
+    baseLogger.info('Polaris Server has started');
+    server.listen(port);
+});
 
 /**
  * Normalize a port into a number, string, or false.
